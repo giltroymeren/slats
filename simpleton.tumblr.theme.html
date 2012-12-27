@@ -1,0 +1,921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+
+<!--
+  SLATS theme for Tumblr blogs
+  Made by Gil Troy Meren
+  http://thekalaban.tumblr.com
+  http://tororoy.tumblr.com
+  http://somelitrato.tumblr.com
+  27 December 2012 v1.1
+-->
+
+<head>
+
+  <title>{Title}</title>
+  <link rel="shortcut icon" href="{Favicon}">
+  <link rel="alternate" type="application/rss+xml" href="{RSS}">
+  {block:Description}
+  <meta name="description" content="{MetaDescription}" />
+  {/block:Description}
+
+  <!--[if !IE 7]>
+  <style type="text/css">
+  #wrap {display:table;height:100%}
+  </style>
+  <![endif]-->
+
+  <!-- Dynamic post parts' customization -->
+  <meta name="if:Show sidebar" content="1">
+  <meta name="if:Show permalink" content="1">
+  <meta name="if:Show tags" content="1">
+  
+  <meta name="color:Main" content="#00AAFF">
+  <meta name="color:Secondary" content="#0088CC">
+  <meta name="color:Dark" content="#262626">
+  <meta name="color:Light" content="#F7F7F7">
+  <meta name="color:Permalink" content="#DDDDDD">
+  <meta name="color:ButtonA" content="#555555">
+  <meta name="color:ButtonB" content="#0088CC">  
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" type="text/css" href="http://static.tumblr.com/tuwgdnw/Wtbmfnxfq/meyer-normalize.css" />
+
+  <style type="text/css">
+    /****************************
+    Micro ClearFix Hack
+    By Nicolas Gallagher
+    http://nicolasgallagher.com/micro-clearfix-hack/ */
+    .clearfix { 
+      zoom: 1; /* IE 6 and below */ 
+    }
+    .clearfix:before, .clearfix:after { 
+      content:""; 
+      display:table; 
+    }
+    .clearfix:after { 
+      clear: both; 
+    }
+
+    html {
+      height: 100%;
+    }
+    body {
+      overflow-x: hidden;
+      background: url("http://static.tumblr.com/tuwgdnw/1ldmfny3z/grey.jpg") repeat top left;    
+      font: normal 1em "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: {color:Dark};
+      height: 100%;
+    }
+    /*Opera Fix*/
+    body:before {
+      content:"";
+      height:100%;
+      float:left;
+      width:0;
+      margin-top:-32767px;/
+    }
+
+    h3 {
+      text-shadow: 0px 1px 1px #4d4d4d;
+    }
+
+    blockquote {
+      margin: 5px 0;
+      margin-left: 2.5%;
+      padding-left: 5px;
+      border-left: 2px solid {color:Main};
+    }
+
+    /* holds both #header and #main-container*/
+    #page-wrap {
+      min-height: 100%;  
+    }
+
+    #header {
+      padding: 1% 1.5%;
+      background: {color:Main};
+    }
+      #header h1 {
+        font-size: 3em;
+        line-height: 1;
+        text-shadow: 0px 1px 1px #4d4d4d;
+        text-transform: uppercase; 
+        }
+      #header h1 a {
+        color: {color:Light};
+      }
+
+    /* header links*/
+    #blog-links {
+      margin: 5px 0;    
+    }
+      #blog-links li {
+        display: inline-block !important; 
+      }
+      #blog-links li a {
+        padding: 3px 10px;
+        margin: 0 5px;
+        background-color: {color:ButtonA};
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -o-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -ms-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        color: #0AF !important;  
+        font-size: 0.75em;
+      } 
+
+      #blog-links li a:hover {
+        background: {color:ButtonB};
+        color: {color:Light} !important;    
+      }
+
+    /*holds both the sidebar and main post list
+      #sidebar, #post-list respectively*/
+    #main-container {
+      margin: 5% auto;
+      width: 75%;
+      padding-bottom: 5%;
+    }     
+      #post-list a {
+        color: {color:Main};
+      }
+      #post-list a:hover {
+        color: {color:Secondary};
+      }
+      .post-container {
+        margin-bottom: 5%;
+        padding: 2.5% 0;
+      }
+      
+    
+    #sidebar {
+      overflow: hidden;
+      background: rgba (255, 255, 255, 0.75 );
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+      -moz-box-shadow: inset 0 2px 6px rgba(0,0,0,.3);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);    
+    }
+      #sidebar .blog-description {
+        padding: 10% 5%;
+        background: rgba( 250, 250, 250, 0.25);
+        font-size: 0.9em;
+      }
+      
+      #sidebar form {
+        padding: 10% 5%;     
+      }
+      
+      #sidebar input[type="text"] {
+        padding: 2.5%;
+        width: 94%;
+      }
+      #sidebar input[type="submit"] {
+        margin-top: 2.5%;
+        padding: 5px;
+        width: 100%;    
+        background: {color:ButtonA};
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        border: 0;
+        background: {color:Dark} !important;
+        box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -o-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        -ms-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+        color: {color:Light} !important;
+        outline: 0;
+        font-size: 1.125em;
+        text-shadow: 0px 1px 1px {color:Dark};
+      }
+      #sidebar input[type="submit"]:hover { 
+        background: {color:ButtonB} !important;
+        color: {color:Main} !important;
+      }
+
+    {block:IfShowSidebar}   
+    #post-list {
+      float: right;
+      padding: 0 5%;
+      width: 70%;    
+    }
+    #sidebar {
+      float: left;
+      width: 20%;
+    }
+    {/block:IfShowSidebar}
+
+    {block:IfNotShowSidebar}        
+    #post-list {
+      width: 100%;    
+    }
+    {/block:IfNotShowSidebar}
+
+    /* PERMALINK AND TAGS (removable) */
+    #post-list .permalink, #post-list .tags {
+      padding: 1%;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+      -moz-box-shadow: inset 0 2px 6px rgba(0,0,0,.3);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+      font-size: 0.75em;
+    }
+      /* PERMALINK */
+      #post-list .permalink h2 {
+        padding: 10px 0;
+        letter-spacing: -1px;
+      }
+      #post-list .permalink {
+        width: 6%;
+        background: #CDCDCD;
+        float: left;
+        text-align: center;
+      }
+      /* TAGS */
+      #post-list .tags {
+        margin: 1% 0; 
+      }
+      #post-list .tags li {  
+        display: inline-block;
+      }
+
+      {block:IfShowPermalink} 
+      #post-list .post {
+        float: right;
+        width: 82%;
+        padding: 0 2.5%;
+      } 
+      {/block:IfShowPermalink}
+
+      {block:IfNotShowPermalink} 
+      #post-list .post {
+        width: 100%;
+        padding: 0 2.5%;
+      }
+      {/block:IfNotShowPermalink} 
+
+    /*PERMALINK PAGE STYLE 
+      Copied and modified from the tumblr theme docs page
+      http://www.tumblr.com/docs/en/custom_themes#notes */
+    ol.notes {
+      padding: 0px;
+      margin: 25px 0px;
+      list-style-type: none;
+      border-bottom: solid 1px {color:Permalink};
+
+      background: rgba (255, 255, 255, 0.75 );
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+      -moz-box-shadow: inset 0 2px 6px rgba(0,0,0,.3);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+    }
+
+    ol.notes li.note {
+      border-top: solid 1px {color:Permalink};
+      padding: 10px;
+    }
+
+    ol.notes li.note img.avatar {
+      vertical-align: -4px;
+      margin-right: 10px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid {color:Light};
+    }
+
+    ol.notes li.note span.action {
+      font-weight: bold;
+    }
+
+    ol.notes li.note .answer_content {
+      font-weight: normal;
+    }
+
+    ol.notes li.note blockquote {
+      border-left: 2px solid {color:Main};
+      padding: 4px 10px;
+      margin: 10px 0px 0px 25px;
+      font-size: 0.75em;
+    }
+
+    ol.notes li.note blockquote a {
+      text-decoration: none;
+    }     
+    
+    /* GENERAL POST MARKUP */
+
+    /* applies to quotes, images, photos, photoset posts */
+    .caption {
+      margin-top: 2.5%;
+      padding: 2%;
+      background: rgba (255, 255, 255, 0.75 );
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+      -moz-box-shadow: inset 0 2px 6px rgba(0,0,0,.3);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+    }
+
+    .text p {
+      padding: 1% 0;
+      letter-spacing: 1px;
+    } 
+    .text h3 {
+      font-size: 3em;
+      line-height: 1;
+    }
+    
+    .ask-container {
+      background: rgba (255, 255, 255, 0.75 );
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+      -moz-box-shadow: inset 0 2px 6px rgba(0,0,0,.3);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);    
+    }
+      .ask-details {
+        padding: 2.5%;    
+      }
+      .ask-details img {
+        float: left;
+      }
+      .ask-details p {
+        float: left;
+        padding: 0 2.5%;
+        width: 70%;   
+        font-weight: bold;
+      }
+      
+      .ask h3 {
+        padding: 2.5%;
+        background: {color:Permalink};
+        font-size: 1.75em;
+        border-top: 1px soild {color:Permalink};
+        border-bottom: 1px soild {color:Permalink};
+      }
+      
+      .ask-answer {
+        padding: 2.5%;
+      }
+
+    .quote h3 {
+      padding: 2.5%;
+      font-size: 2.25em;
+      line-height: 1.25;
+    }
+
+    .chat-container {
+      background: rgba (255, 255, 255, 0.75 );
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+      -moz-box-shadow: inset 0 2px 6px rgba(0,0,0,.3);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, .3);
+    }
+      .chat h3 {
+        font-size: 2em;
+      }
+      .chat-container li {
+        padding: 1% 2%; 
+      }
+      .chat-container li:nth-child(even) {
+        background: {color:Permalink};
+      }
+      .chat-container li span {
+        font-weight: bold;
+      }
+
+    .link h3 a {
+      padding: 2.5%;    
+      font-size: 1.5em;
+      line-height: 1;
+      background: {color:ButtonA};
+      box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -o-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -ms-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      /* Round corners */
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      border-radius: 10px; 
+      color: {color:Main} !important;
+    }
+      .link h3 a:hover {
+        background: {color:ButtonB};
+        color: {color:Light} !important;
+      }
+      .link .link-caption {
+        margin-top: 5%;   
+      }
+
+    /* general shadowing for all images */
+    .photo-container img, .album-art, #sidebar .avatar img { width: 100%; }
+    .photo-container img, .photoset-container img, .album-art,
+    ol.notes li.note img.avatar, #sidebar .avatar img,
+    #sidebar form {
+      box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -o-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+      -ms-box-shadow: 0 1px 5px rgba(0, 0, 0, .75);
+    }
+    .audio-container {
+      margin: 5% 0;
+    }
+    .video-container iframe {
+      width: 100%;
+    }
+
+    /*Footer 
+      Sticky footer by: http://www.cssstickyfooter.com/ */
+    #footer {
+      padding: 1%;
+      background: {color:Main};
+      font-size: 0.75em;
+      text-align: center;
+
+      position: relative;
+      margin-top: -5%; /* negative value of footer height */
+      height: 5%;
+      clear:both;
+    }
+      #footer a {
+        color: {color:Light};
+      }
+
+    {Custom CSS}
+  </style>
+
+</head>
+
+<body>
+
+  <div id="page-wrap">
+
+    <!-- HEADER -->
+    <div id="header" class="clearfix">
+      <h1 class="clearfix"><a href="/">{Title}</a></h1>
+
+      <ul id="blog-links" class="clearfix">
+        <li><a href="/">Home</a></li>
+        <li><a href="/archive">Archive</a></li>
+
+        {block:SubmissionsEnabled} 
+        <li><a href="/submit">{SubmitLabel}</a></li>
+        {/block:SubmissionsEnabled} 
+
+        {block:AskEnabled} 
+        <li><a href="/ask">Ask</a></li>
+        {/block:AskEnabled} 
+
+        <li><a href="{RSS}">RSS</a></li>
+      </ul>
+
+    </div> <!-- END #header -->
+  
+    <div id="main-container" class="clearfix">  
+
+      {block:IfShowSidebar}
+      <div id="sidebar">
+
+        <div class="avatar">
+          <a href="/"><img src="{PortraitURL-128}" /></a>
+        </div>
+
+        <div class="blog-description">
+          {block:Description}
+          <p id="description">{Description}</p>
+          {/block:Description}
+        </div>
+
+        <form action="/search" method="get">
+          <input type="text" name="q" value="{URLSafeSearchQuery}"/>
+          <input type="submit" value="Search"/>
+        </form>
+
+      </div>
+      {/block:IfShowSidebar}
+      <!-- END #sidebar -->
+
+      <ul id="post-list" class="clearfix">    
+      {block:Posts}
+
+        <!-- TEXT -->
+        {block:Text}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post text">
+              <h3><a href="{Permalink}">{Title}</a></h3>
+              {Body}
+
+              {block:IfShowTags}
+              {block:HasTags}
+                <ul class="tags clearfix">
+                  {block:Tags}
+                  <li>#<a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                </ul>
+              {/block:HasTags}
+              {/block:IfShowTags}
+
+              {block:PostNotes}
+                {PostNotes-64}
+              {/block:PostNotes} 
+
+            </div>
+
+          </li>
+        {/block:Text}
+        <!-- TEXT -->
+        
+        <!-- ASK -->
+        {block:Answer}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post ask">
+            
+              <div class="ask-container">
+                <div class="ask-details clearfix">
+                    <img src="{AskerPortraitURL-30}" />                    
+                    <p>{Asker} asked:</p>
+                </div>
+              
+                <h3>{Question}</h3>
+              
+                <div class="ask-answer">
+                    {Answer}
+                </div>
+            
+              </div>
+            
+              {block:IfShowTags}
+                {block:HasTags}
+                <ul class="tags clearfix">
+                  {block:Tags}
+                  <li>#<a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                </ul>
+              {/block:HasTags}
+              {/block:IfShowTags}
+
+              {block:PostNotes}
+                {PostNotes-64}
+              {/block:PostNotes} 
+
+            </div>
+
+          </li>
+        {/block:Answer}
+        <!-- END ASK -->
+        
+        <!-- QUOTE -->
+        {block:Quote}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post quote">
+              <h3>{Quote}</a></h3>
+
+              {block:Source}
+              <div class="caption">{Source}</div>
+              {/block:Source}
+
+              {block:IfShowTags}
+                {block:HasTags}
+                <ul class="tags clearfix">
+                  {block:Tags}
+                  <li>#<a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                </ul>
+                {/block:HasTags}
+              {/block:IfShowTags}
+
+              {block:PostNotes}
+                {PostNotes-64}
+              {/block:PostNotes}
+
+            </div>
+
+          </li>
+        {/block:Quote}
+        <!-- QUOTE -->
+
+        <!-- CHAT -->
+        {block:Chat}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post chat">
+              {block:Title}
+              <h3><a href="{URL}">{Title}</a></h3>
+              {/block:Title}
+
+              <ul class="chat-container">
+                {block:Lines}
+                <li class="{Alt} user_{UserNumber}">
+                  {block:Label}
+                  <span class="label">{Label}</span>
+                  {/block:Label}
+                {Line}
+                </li>
+                {/block:Lines}
+              </ul>
+
+              {block:IfShowTags}
+                {block:HasTags}
+                <ul class="tags clearfix">
+                  {block:Tags}
+                  <li>#<a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                </ul>
+                {/block:HasTags}
+              {/block:IfShowTags}
+
+              {block:PostNotes}
+                {PostNotes-64}
+              {/block:PostNotes}
+
+            </div>
+
+          </li>
+        {/block:Chat}
+        <!-- END CHAT -->
+
+        <!-- LINK -->
+        {block:Link}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post link">
+              <h3>
+                <a target="_blank" href="{Permalink}" {Target}>{Name} &#8594;</a>
+              </h3>
+
+              {block:Description}
+              <div class="link-caption">{Description}</div>
+              {/block:Description}
+
+              {block:IfShowTags}
+                {block:HasTags}
+                <ul class="tags clearfix">
+                  {block:Tags}
+                  <li>#<a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                </ul>
+              {/block:HasTags}
+              {/block:IfShowTags}
+
+              {block:PostNotes}
+                {PostNotes-64}
+              {/block:PostNotes}
+
+            </div>
+
+          </li>
+        {/block:Link}
+        <!-- END LINK -->
+
+        <!-- PHOTO -->
+        {block:Photo}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+          <div class="post photo">
+            
+            <div class="photo-container">
+              {LinkOpenTag}
+              <img alt="{PhotoAlt}" src="{PhotoURL-HighRes}" />
+              {LinkCloseTag}
+            </div>
+
+            {block:Caption}
+            <div class="caption">{Caption}</div>
+            {/block:Caption}
+
+            {block:IfShowTags}
+              {block:HasTags}
+              <ul class="tags clearfix">
+                {block:Tags}
+                <li>#<a href="{TagURL}">{Tag}</a></li>
+                {/block:Tags}
+                </ul>
+                {/block:HasTags}
+            {/block:IfShowTags}
+
+            {block:PostNotes}
+              {PostNotes-64}
+            {/block:PostNotes}
+
+          </div>
+
+          </li>
+        {/block:Photo}
+        <!-- END PHOTO -->
+
+        <!-- PHOTOSET -->
+        {block:Photoset}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+               <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post photoset">
+              
+              <div class="photoset-container">
+              {block:Photos}
+              <img src="{PhotoURL-HighRes}" width="{PhotoWidth-500}" height="{PhotoHeight-500}" />
+              {/block:Photos}
+              </div>
+              
+              {block:Caption}
+              <div class="caption">{Caption}</div>
+              {/block:Caption}
+
+              {block:IfShowTags}
+                {block:HasTags}
+                <ul class="tags clearfix">
+                  {block:Tags}
+                  <li>#<a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                  </ul>
+                {/block:HasTags}
+              {/block:IfShowTags}
+
+              {block:PostNotes}
+                {PostNotes-64}
+              {/block:PostNotes}
+
+            </div>
+
+          </li>
+        {/block:Photoset}
+        <!-- END PHOTOSET -->
+
+        <!-- AUDIO -->
+        {block:Audio}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post audio">
+              {block:AlbumArt}
+              <img class="album-art" src="{AlbumArtURL}" />
+              {/block:AlbumArt}
+
+              <div class="audio-main">
+                <div class="audio-container">
+                {AudioPlayerGrey}
+                </div>
+
+                {block:Caption}
+                <div class="caption">{Caption}</div>
+                {/block:Caption}
+            </div> 
+
+            {block:IfShowTags}
+              {block:HasTags}
+              <ul class="tags clearfix">
+                {block:Tags}
+                <li>#<a href="{TagURL}">{Tag}</a></li>
+                {/block:Tags}
+                </ul>
+              {/block:HasTags}
+            {/block:IfShowTags}
+
+            {block:PostNotes}
+              {PostNotes-64}
+            {/block:PostNotes}
+
+          </div>
+
+          </li>
+        {/block:Audio}
+        <!-- END AUDIO -->
+
+        <!-- VIDEO -->
+          {block:Video}
+          <li class="post-container clearfix">
+
+            {block:IfShowPermalink}
+            <div class="permalink">
+              <h2><a href="{Permalink}">{NoteCount}</a></h2>
+              <p>{DayOfMonth} {ShortMonth}<br/>{Year}</p>
+            </div>
+            {/block:IfShowPermalink}
+
+            <div class="post video">
+
+              <div class="video-container">
+              {Video-500}
+              </div>
+
+              {block:Caption}
+              <div class="caption">{Caption}</div>
+              {/block:Caption}    
+
+              {block:IfShowTags}
+                {block:HasTags}
+                <ul class="tags clearfix">
+                  {block:Tags}
+                  <li>#<a href="{TagURL}">{Tag}</a></li>
+                  {/block:Tags}
+                </ul>
+                {/block:HasTags}
+              {/block:IfShowTags}
+
+              {block:PostNotes}
+                {PostNotes-64}
+              {/block:PostNotes}
+
+            </div>
+
+          </li>
+          {/block:Video}
+        <!-- END VIDEO -->
+      
+      {/block:Posts}
+      </ul> 
+      <!-- END #post-list -->
+
+    </div>   
+    <!-- #main-container -->
+
+  </div> <!-- END #page-wrap -->
+
+  <!-- FOOTER -->
+  <div id="footer"  class="clearfix">
+    
+    <p> 
+      <a href="/">{Title}</a> &copy; 2012 &#183;
+      Slats, a theme by <a target="_blank" href="http://thekalaban.tumblr.com/">TheKalaban</a> &#183;
+      Powered by <a href="http://tumblr.com/">tumblr</a>
+    </p>
+
+  </div>
+  <!-- END #footer -->
+
+</body>
+
+</html>
