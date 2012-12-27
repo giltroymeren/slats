@@ -38,7 +38,7 @@ Documentation
   - this theme's information
   - credit to tumblr
 
-### Third Party CSS Hacks
+### Third Party Stuff
 - [Clearfix Hack](http://nicolasgallagher.com/micro-clearfix-hack/) by Nicholas Gallagher
 - [CSS Sticky Footer](http://www.cssstickyfooter.com/)
 - [Meyer Reset](http://meyerweb.com/eric/tools/css/reset/) by Eric Meyer
