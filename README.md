@@ -2,13 +2,14 @@ slats
 =========
 
 A basic theme for [tumblr](http://tumblr.com) by [Troy Meren](http://troymeren.github.com/)
+(not yet approved)
 
 Installation
 ------------
 1. Open your blog, i.e. go to `http://your-tumblr-url.tumblr.com`
-2. Click *Customize*
+2. Click **Customize**
 3. On the left panel click the **Edit HTML** button.
-4. Just paste the Simpleton code to the text editor that will appear.
+4. Just paste the Slats code to the text editor that will appear.
 5. Save 
 6. Customize the theme with the different options available
 
